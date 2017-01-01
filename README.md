@@ -1,4 +1,11 @@
-# macOS Setup Notes
+# THIS REPO HAS A NEW LOCATION
+
+Please change to https://github.com/sixarm/sixarm_mac_setup
+
+The new location has better notes and improvemnts for macOS Sierra.
+
+
+# Sixarm Mac Setup
 
 How to set up a new Mac computer that is running macOS? These notes show how our teams do it.
 
