@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Fix anything we know of that can cause this macOS upgrade error:
+#
+#   * The path /System/Installation/Packages/OSInstall.mpkg
+#     appears to be missing or damaged
+#
+# See https://apple.stackexchange.com/questions/299808/high-sierra-the-path-system-installation-packages-osinstall-mpkg-appears-to-b
+#
+# ## Ideas
+#
+# * To restart in recovery mode, boot while you press down Command and R.
+
+# * In recovery mode, you can get a terminal by doing Utilities -> Terminal.
+#
+# * In recovery mode, you can use the disk utility to do a repair.
+#
+##
+
+echo "Show the available disk capacity"
+df
+
+echo "Find any orphaned file named OSInstall.mpk"
+{ LC_ALL=C find / -name OSInstall.mpk 3>&2 2>&1 1>&3 | grep -v 'Permission denied' >&3; } 3>&2 2>&1
+
+echo "Make the expected directory for system installation packages"
+mkdir -p "/Volumes/Macintosh HD/System/Installation/Packages"
+
+echo "If the find command found a file, you can move it to the correct place:"
+echo "cp \"<OSInstall.mpkg path>\" \"/Volumes/Macintosh HD/System/Installation/Packages/"\"
+
