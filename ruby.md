@@ -14,17 +14,23 @@ Brew:
 
 Or install manually (deprecated):
 
+    v=0.3.4
     cd /opt
-    wget -O ruby-install-0.3.4.tar.gz https://github.com/postmodern/ruby-install/archive/v0.3.4.tar.gz
-    tar -xzvf ruby-install-0.3.4.tar.gz
-    cd ruby-install-0.3.4/
+    wget -O ruby-install-$v.tar.gz https://github.com/postmodern/ruby-install/archive/v$v.tar.gz
+    tar -xzvf ruby-install-$v.tar.gz
+    cd ruby-install-$v/
     sudo make install
 
 Install as root and in our preferred custom directory:
 
-    sudo su - 
-    mkdir -p /opt/ruby/2.1.2 
-    ruby-install -i /opt/ruby/2.1.2 ruby 2.1.2
+    sudo su -
+    v=2.5.1
+    mkdir -p /opt/ruby/$v
+    ruby-install -i /opt/ruby/$v ruby $v
+   
+Optional symlink:
+
+    ln -sfn 2.5.1 current
 
 Or install as yourself and in the default directory:
 
